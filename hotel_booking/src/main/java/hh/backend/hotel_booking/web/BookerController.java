@@ -1,0 +1,69 @@
+package hh.backend.hotel_booking.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import hh.backend.hotel_booking.domain.Booker;
+import hh.backend.hotel_booking.domain.BookerRepository;
+import hh.backend.hotel_booking.domain.ComerRepository;
+import hh.backend.hotel_booking.domain.RoomRepository;
+
+@Controller
+public class BookerController {
+
+    private final BookerRepository bookerRepository;
+    private final ComerRepository comerRepository;
+    private final RoomRepository roomRepository;
+    
+    public BookerController(BookerRepository bookerRepository, ComerRepository comerRepository,
+            RoomRepository roomRepository) {
+        this.bookerRepository = bookerRepository;
+        this.comerRepository = comerRepository;
+        this.roomRepository = roomRepository;
+    }
+
+    @GetMapping("/bookerlist")
+    public String bookerlist(Model model){
+        model.addAttribute("booker", bookerRepository.findAll());
+        return"bookerlist";
+    }
+
+    @GetMapping("/addbooker")
+    public String addBooker(Model model){
+        model.addAttribute("booker", new Booker());
+        model.addAttribute("comer", comerRepository.findAll());
+        model.addAttribute("room", roomRepository.findAll());
+        return "addbooker";
+    }
+
+    @PostMapping("/savebooker")
+    public String saveBooker (@ModelAttribute Booker booker, Model model){
+        bookerRepository.save(booker);
+        model.addAttribute("booker", booker);
+        return"redirect:/bookerlist";
+    }
+
+    @GetMapping("/deletebooker/{id}")
+    public String deleteBooker(@PathVariable("id")  long booker_id, Model model){
+        bookerRepository.deleteById(booker_id);
+        return"redirect:../bookerlist";
+    }
+ 
+    @GetMapping("/updatebooker/{id}")
+    public String updateBooker(@PathVariable("id") long booker_id, Model model){
+        Booker booker = bookerRepository.findById(booker_id).orElseThrow(() ->
+        new IllegalArgumentException("Wromg booker id"));
+        model.addAttribute("booker", booker);
+        return "editbooker";
+    }
+
+    @PostMapping("/bookerupdate")
+    public String bookerUpdate(@ModelAttribute Booker booker){
+        bookerRepository.save(booker);
+        return "redirect:../bookerlist";
+    }
+}
