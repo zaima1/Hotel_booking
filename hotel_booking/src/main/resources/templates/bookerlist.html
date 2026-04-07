@@ -17,12 +17,12 @@
             <th>Booking name </th>
         </tr>
     <tr th:each="booker: ${bookers}">
-        <td th:text="${booker.arraiving}"></td>
+        <td th:text="${booker.araiving}"></td>
         <td th:text="${booker.leaving}"></td>
         <td th:text="${#numbers.formatDecimal(booker.price /100, 1,2 )}"></td>
         <td th:text="${booker.peopleComing}"></td>
         <td th:text="${booker.name}"></td>
-         <td><a th:href="@{/deletebooker/{id}(id=${booker.bookerId})}" class="button">Delete</a></td>
+         <td><a th:href="@{/deletebooker/{id}(id=${booker.bookerId})}" class="">Delete</a></td>
             <td>  <a th:href="@{/updatebooker/{id}(id=${booker.bookerId})}" class="button" >Edit booker</a></td>
 		</tr>
     </table>

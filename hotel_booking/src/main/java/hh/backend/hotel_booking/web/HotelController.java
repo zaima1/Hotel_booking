@@ -24,7 +24,7 @@ public class HotelController {
     @GetMapping("/listhotel")
     public String listhotel
     (Model model){
-        model.addAttribute("hotel", hotelRepository.findAll());
+        model.addAttribute("hotels", hotelRepository.findAll());
         return"listhotel";
     }
 
@@ -43,18 +43,18 @@ public class HotelController {
     }
     
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/deletehotel/{id}")
     public String deleteHotel(@PathVariable("id") Long hotelId, Model model){
         hotelRepository.deleteById(hotelId);
         return "redirect:../listhotel";
     }
 
 
-    @GetMapping("/updete/{id}")
+    @GetMapping("/updatehotel/{id}")
     public String updatehotel(@PathVariable("id") Long hotelId, Model model){
         Hotel hotel = hotelRepository.findById(hotelId).orElseThrow(()->
         new IllegalArgumentException("Wrong hotel id"));
-        model.addAttribute("hotel", hotel);
+        model.addAttribute("hotels", hotel);
         return"edithotel";
     }
 

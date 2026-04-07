@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    
+
     <h1>Rooms</h1>
     <table>
         <tr>
@@ -20,10 +20,13 @@
             <td th:text="${room.beds}"></td>
             <td th:text="${#numbers.formatDecimal(room.price /100, 1,2 )}"></td>
             <td th:text="${room.available}"></td>
-            <td>Lisää edit ja delete </td>
-        </tr>
-    </table>
 
+            <td><a th:href="@{/deleteroom/{id}(id=${room.roomId})}" class="button">Delete</a></td>
+            <td><a th:href="@{/updateroom/{id}(id=${room.roomId})}" class="button">Edit room</a></td>
+        </tr>
+
+    </table>
+    <a th:href="@{/addroom}" class="button">Add room</a>
 </body>
 
 </html>

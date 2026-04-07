@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add hotel</title>
+    <title>Add room</title>
 </head>
 <body>
-    <h1>Add Hotel</h1>
+    <h1>Add Room</h1>
         <div>
             <form method="post" action="#" th:action="@{/saveroom}" th:object="${rooms}">
-                <p>Room number: <input type="number" th:field="*{room_id}"/></p>
+                <p>Room number: <input type="number" th:field="*{roomId}"/></p>
                 <p>Beds: <input type="number" th:field="*{beds}"/></p>
                 <p> Price: <input type="number" th:field="*{price}"/></p>
-                <p>Available: <input type="datetime-local" th:field="*{available}"/></p>
-                <p>Ending: <input type="datetime-local" th:field="*{availableEnding}"/></p>
+                <p>Available: <input type="date" th:field="*{available}"/></p>
+                <p>Ending: <input type="date" th:field="*{availableEnding}"/></p>
                 
                
                 <input type="submit" value="Submit" /> <input type="reset" value="Reset" />

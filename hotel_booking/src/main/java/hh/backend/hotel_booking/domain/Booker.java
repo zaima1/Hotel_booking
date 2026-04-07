@@ -2,7 +2,6 @@ package hh.backend.hotel_booking.domain;
 
 import java.time.LocalDate;
 
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,39 +19,50 @@ public class Booker {
     private LocalDate leaving;
     private Integer price;
     private Integer peopleComing;
-    private String name;
+    private String firstName;
+    private String lastName;
 
     @OneToOne
-    private Comer comer; 
+    private Comer comer;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "booker")
     private Room room;
 
     public Booker() {
     }
 
-    
-
-    public Booker( LocalDate araiving, LocalDate leaving, Integer price, Integer peopleComing, String name) {
+    public Booker( LocalDate araiving, LocalDate leaving, Integer price, Integer peopleComing,
+            String firstName, String lastName) {
         this.araiving = araiving;
         this.leaving = leaving;
         this.price = price;
         this.peopleComing = peopleComing;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public Long getBookerId() {
         return bookerId;
     }
 
-
-
     public void setBookerId(Long bookerId) {
         this.bookerId = bookerId;
     }
-
-
 
     public Integer getPeopleComing() {
         return peopleComing;
@@ -62,15 +72,7 @@ public class Booker {
         this.peopleComing = peopleComing;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
+    
     public LocalDate getAraiving() {
         return araiving;
     }
@@ -95,19 +97,11 @@ public class Booker {
         this.price = price;
     }
 
-
-
-
-
     @Override
     public String toString() {
-        return "Booker [bookerId=" + bookerId + ", araiving=" + araiving + ", leaving=" + leaving + ", price="
-                + price + ", peopleComing=" + peopleComing + ", name=" + name + "]";
+        return "Booker [bookerId=" + bookerId + ", araiving=" + araiving + ", leaving=" + leaving + ", price=" + price
+                + ", peopleComing=" + peopleComing + ", firstName=" + firstName + ", lastName=" + lastName + ", comer="
+                + comer + ", room=" + room + "]";
     }
 
-   
-
-    
-
-    
 }

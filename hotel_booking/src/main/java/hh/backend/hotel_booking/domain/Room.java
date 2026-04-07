@@ -1,11 +1,10 @@
 package hh.backend.hotel_booking.domain;
 
 import java.time.LocalDate;
-import java.time.LocalDate;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -23,7 +22,7 @@ public class Room {
 
     @ManyToOne
     @JsonIgnoreProperties("room")
-    @JoinColumn(name = "hotel_id")
+    @JoinColumn(name = "hotelId")
     private Hotel hotel;
 
     @OneToOne
@@ -57,11 +56,11 @@ public class Room {
         return available;
     }
 
-    public Long getroom_id() {
+    public Long getRoomId() {
         return roomId;
     }
 
-    public void setroom_id(Long roomId) {
+    public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
 

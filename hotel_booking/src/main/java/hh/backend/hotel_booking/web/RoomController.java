@@ -52,6 +52,7 @@ public class RoomController {
     public String updateRoom(@PathVariable("id") long roomNumber, Model model ){
         Room room = roomRepository.findById(roomNumber).orElseThrow(()->
          new IllegalArgumentException("wrong room number"));
+         model.addAttribute("rooms", room);
         return"editroom";
     }
 

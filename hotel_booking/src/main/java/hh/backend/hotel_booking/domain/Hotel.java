@@ -17,7 +17,7 @@ public class Hotel {
     private Integer roomAmount;
     private String address;
     private String city;
-    private Integer postcode;
+    private String postcode;
     private Integer stars;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
@@ -26,15 +26,14 @@ public class Hotel {
     public Hotel() {
     }
 
-    public Hotel(Long hotelId, Integer roomAmount, String address, String city, Integer postcode,
-            Integer stars, List<Room> rooms) {
-        this.hotelId = hotelId;
+    public Hotel(Integer roomAmount, String address, String city, String postcode,
+            Integer stars) {
+
         this.roomAmount = roomAmount;
         this.address = address;
         this.city = city;
         this.postcode = postcode;
         this.stars = stars;
-        this.rooms = rooms;
     }
 
     public Long getHotel_id() {
@@ -45,7 +44,6 @@ public class Hotel {
         this.hotelId = hotelId;
     }
 
-    
     public Integer getRoomAmount() {
         return roomAmount;
     }
@@ -54,12 +52,12 @@ public class Hotel {
         this.roomAmount = roomAmount;
     }
 
-    public List<Room> getRooms() {
-        return rooms;
+    public Long getHotelId() {
+        return hotelId;
     }
 
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
+    public void setHotelId(Long hotelId) {
+        this.hotelId = hotelId;
     }
 
     public String getAddress() {
@@ -78,11 +76,11 @@ public class Hotel {
         this.city = city;
     }
 
-    public Integer getPostcode() {
+    public String getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(Integer postcode) {
+    public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
 
@@ -100,6 +98,5 @@ public class Hotel {
                 + ", city=" + city
                 + ", postcode=" + postcode + ", stars=" + stars + "]";
     }
-
 
 }

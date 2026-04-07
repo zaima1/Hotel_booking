@@ -36,6 +36,7 @@ public class BookerController {
     public String addBooker(Model model){
         model.addAttribute("booker", new Booker());
         model.addAttribute("comers", comerRepository.findAll());
+        model.addAttribute("room", roomRepository.findAll());
         return "addbooker";
     }
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels</title>
+</head>
+<body>
+    
+    <h1>Hotels</h1>
+    <table>
+        <tr>
+            <th>Room amount</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Postcode</th>
+            <th>Stars </th>
+        </tr>
+    <tr th:each="hotel: ${hotels}">
+        <td th:text="${hotel.roomAmount}"></td>
+        <td th:text="${hotel.address}"></td>
+        <td th:text="${hotel.city}"></td>
+        <td th:text="${hotel.postcode}"></td>
+        <td th:text="${hotel.stars}"></td>
+        <td><a th:href="@{/deletehotel/{id}(id=${hotel.hotelId})}" class="button">Delete</a></td>
+        <td>  <a th:href="@{/updatehotel/{id}(id=${hotel.hotelId})}" class="button" >Edit Hotel</a></td>
+		</tr>
+    </table>
+    <a th:href="@{/addhotel}" class="button" >Add Hotel</a>
+
+    
+</body>
+</html>

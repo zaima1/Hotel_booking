@@ -14,11 +14,11 @@
                 <p>Price: <input type="number" th:field="*{price}"/></p>
                 <p>People coming: <input type="number" th:field="*{peopleComing}"/></p>
                 <p>Name: <input type="text" th:field="*{name}"/></p>
-                    <label >Room:</label>
+                    <label >Beds in room:</label>
                      <select>
                         <option th:each="ro: ${room}" 
                             th:value="${ro}" 
-                            th:text="${ro.bed}"></option>
+                            th:text="${ro.beds}"></option>
                      </select>
                     
                 </div>

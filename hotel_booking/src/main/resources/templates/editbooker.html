@@ -9,14 +9,15 @@
     <h2>Update booker</h2>
       
         <div>
-            <form method="post" action="#" th:action="@{/bookerupdate}" th:object="${booker}">
+            <form method="post" action="#" th:action="@{/bookerupdate}" th:object="${bookers}">
 
              <input type="hidden" th:field="*{bookerId}"/>
 
-                <p>Title: <input type="text" th:field="${book.title}"/></p>
-                <p>Author: <input type="text" th:field="${book.author}"/></p>
-                <p>Publication year: <input type="text" th:field="${book.puplicationYear}"/></p>
-                <p>Price: <input type="text" th:field="${book.price}"/></p>
+                <p>Araving: <input type="date" th:field="*{araiving}"/></p>
+                <p>Leaving: <input type="date" th:field="*{leaving}"/></p>
+                <p>Price: <input type="number" th:field="*{price}"/></p>
+                <p>People coming: <input type="text" th:field="*{peopleComing}"/></p>
+                <p>Name: <input type="text" th:field="*{name}"/></p>
                 <input type="submit" value="Submit" /> 
             </form>
         </div>
