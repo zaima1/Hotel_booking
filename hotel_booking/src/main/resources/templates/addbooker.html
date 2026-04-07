@@ -9,18 +9,18 @@
     <h1>Add Booker</h1>
         <div>
             <form method="post" action="#" th:action="@{/savebooker}" th:object="${booker}">
-                <p>Arraiving: <input type="date" th:field="*{arraiving}"/></p>
+                <p>Araiving: <input type="date" th:field="*{araiving}"/></p>
                 <p>Leaving: <input type="date" th:field="*{leaving}"/></p>
                 <p>Price: <input type="number" th:field="*{price}"/></p>
                 <p>People coming: <input type="number" th:field="*{peopleComing}"/></p>
                 <p>Name: <input type="text" th:field="*{name}"/></p>
-                <div th:object="${rooms}">
-                    <label >Comers:</label>
-                     <select >
-                        <option th:each="come: ${comer}" 
-                            th:value="${come.people}" 
-                            th:text="${come.people}"></option>
+                    <label >Room:</label>
+                     <select>
+                        <option th:each="ro: ${room}" 
+                            th:value="${ro}" 
+                            th:text="${ro.bed}"></option>
                      </select>
+                    
                 </div>
                
                 <input type="submit" value="Submit" /> <input type="reset" value="Reset" />

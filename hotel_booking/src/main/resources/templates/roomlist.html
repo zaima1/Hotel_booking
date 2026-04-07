@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room list</title>
+</head>
+
+<body>
+    
+    <h1>Rooms</h1>
+    <table>
+        <tr>
+            <th>Beds</th>
+            <th>Price</th>
+            <th>Available</th>
+        </tr>
+        <tr th:each="room: ${rooms}">
+            <td th:text="${room.beds}"></td>
+            <td th:text="${#numbers.formatDecimal(room.price /100, 1,2 )}"></td>
+            <td th:text="${room.available}"></td>
+            <td>Lisää edit ja delete </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

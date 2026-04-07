@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long hotel_id;
+    private Long hotelId;
     private Integer roomAmount;
     private String address;
     private String city;
@@ -26,9 +26,9 @@ public class Hotel {
     public Hotel() {
     }
 
-    public Hotel(Long hotel_id, Integer roomAmount, String address, String city, Integer postcode,
+    public Hotel(Long hotelId, Integer roomAmount, String address, String city, Integer postcode,
             Integer stars, List<Room> rooms) {
-        this.hotel_id = hotel_id;
+        this.hotelId = hotelId;
         this.roomAmount = roomAmount;
         this.address = address;
         this.city = city;
@@ -38,11 +38,11 @@ public class Hotel {
     }
 
     public Long getHotel_id() {
-        return hotel_id;
+        return hotelId;
     }
 
-    public void setHotel_id(Long hotel_id) {
-        this.hotel_id = hotel_id;
+    public void setHotel_id(Long hotelId) {
+        this.hotelId = hotelId;
     }
 
     
@@ -96,7 +96,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel [hotel_id=" + hotel_id + ", roomAmount=" + roomAmount + ", address=" + address
+        return "Hotel [hotelId=" + hotelId + ", roomAmount=" + roomAmount + ", address=" + address
                 + ", city=" + city
                 + ", postcode=" + postcode + ", stars=" + stars + "]";
     }

@@ -28,36 +28,35 @@ public class BookerController {
 
     @GetMapping("/bookerlist")
     public String bookerlist(Model model){
-        model.addAttribute("booker", bookerRepository.findAll());
+        model.addAttribute("bookers", bookerRepository.findAll());
         return"bookerlist";
     }
 
     @GetMapping("/addbooker")
     public String addBooker(Model model){
         model.addAttribute("booker", new Booker());
-        model.addAttribute("comer", comerRepository.findAll());
-        model.addAttribute("room", roomRepository.findAll());
+        model.addAttribute("comers", comerRepository.findAll());
         return "addbooker";
     }
 
     @PostMapping("/savebooker")
     public String saveBooker (@ModelAttribute Booker booker, Model model){
         bookerRepository.save(booker);
-        model.addAttribute("booker", booker);
+        model.addAttribute("bookers", booker);
         return"redirect:/bookerlist";
     }
 
     @GetMapping("/deletebooker/{id}")
-    public String deleteBooker(@PathVariable("id")  long booker_id, Model model){
-        bookerRepository.deleteById(booker_id);
-        return"redirect:../bookerlist";
+    public String deleteBooker(@PathVariable("id")  long bookerId, Model model){
+        bookerRepository.deleteById(bookerId);
+        return"redirect:/bookerlist";
     }
  
     @GetMapping("/updatebooker/{id}")
-    public String updateBooker(@PathVariable("id") long booker_id, Model model){
-        Booker booker = bookerRepository.findById(booker_id).orElseThrow(() ->
-        new IllegalArgumentException("Wromg booker id"));
-        model.addAttribute("booker", booker);
+    public String updateBooker(@PathVariable("id") long bookerId, Model model){
+        Booker booker = bookerRepository.findById(bookerId).orElseThrow(() ->
+        new IllegalArgumentException("Wrong booker id"));
+        model.addAttribute("bookers", booker);
         return "editbooker";
     }
 

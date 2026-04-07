@@ -44,15 +44,15 @@ public class HotelController {
     
 
     @GetMapping("/delete/{id}")
-    public String deleteHotel(@PathVariable("id") Long hotel_id, Model model){
-        hotelRepository.deleteById(hotel_id);
+    public String deleteHotel(@PathVariable("id") Long hotelId, Model model){
+        hotelRepository.deleteById(hotelId);
         return "redirect:../listhotel";
     }
 
 
     @GetMapping("/updete/{id}")
-    public String updatehotel(@PathVariable("id") Long hotel_id, Model model){
-        Hotel hotel = hotelRepository.findById(hotel_id).orElseThrow(()->
+    public String updatehotel(@PathVariable("id") Long hotelId, Model model){
+        Hotel hotel = hotelRepository.findById(hotelId).orElseThrow(()->
         new IllegalArgumentException("Wrong hotel id"));
         model.addAttribute("hotel", hotel);
         return"edithotel";

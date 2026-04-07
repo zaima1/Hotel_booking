@@ -1,8 +1,7 @@
 package hh.backend.hotel_booking.domain;
 
-
 import java.time.LocalDate;
-
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -16,9 +15,9 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Room {
     @Id
-    private Long roomNumber;
+    private Long roomId;
     private Integer beds;
-    private Integer price;//jaa sadalla ku laitat nettisivulle 
+    private Integer price;// jaa sadalla ku laitat nettisivulle
     private LocalDate available;
     private LocalDate availableEnding;
 
@@ -27,51 +26,43 @@ public class Room {
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
-    
     @OneToOne
     private Booker booker;
 
     public Room() {
-        
+
     }
 
-  
-
-   
-
-
-
-    public Room(Long roomNumber, Integer beds, Integer price, LocalDate available, LocalDate availableEnding) {
-        this.roomNumber = roomNumber;
+    public Room(Long roomId, Integer beds, Integer price, LocalDate available, LocalDate availableEnding) {
+        this.roomId = roomId;
         this.beds = beds;
         this.price = price;
         this.available = available;
         this.availableEnding = availableEnding;
     }
 
-
-
-
-
-
+    public void setAvailable(LocalDate available) {
+        this.available = available;
+    }
 
     public LocalDate getAvailableEnding() {
         return availableEnding;
     }
 
-
-
     public void setAvailableEnding(LocalDate availableEnding) {
         this.availableEnding = availableEnding;
     }
 
-
-    public Long getRoomNumber() {
-        return roomNumber;
+    public LocalDate getAvailable() {
+        return available;
     }
 
-    public void setRoomNumber(Long roomNumber) {
-        this.roomNumber = roomNumber;
+    public Long getroom_id() {
+        return roomId;
+    }
+
+    public void setroom_id(Long roomId) {
+        this.roomId = roomId;
     }
 
     public Integer getBeds() {
@@ -90,37 +81,10 @@ public class Room {
         this.price = price;
     }
 
-    public LocalDate getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(LocalDate available) {
-        this.available = available;
-    }
-
-
-
     @Override
     public String toString() {
-        return "Room [roomNumber=" + roomNumber + ", beds=" + beds + ", price=" + price
+        return "Room [roomId=" + roomId + ", beds=" + beds + ", price=" + price
                 + ", available=" + available + ", availableEnding=" + availableEnding + "]";
     }
-
-
-
-
-
-
-
-  
-
-  
-
-
-
-    
-
-    
-    
 
 }

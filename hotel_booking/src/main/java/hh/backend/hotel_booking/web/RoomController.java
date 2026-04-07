@@ -22,7 +22,7 @@ public class RoomController {
         this.hotelRepository = hotelRepository;
     }
 
-    @GetMapping("/rooms")
+    @GetMapping("/roomlist")
     public String rooms(Model model){
         model.addAttribute("rooms",roomRepository.findAll());
         return "roomlist";
@@ -38,7 +38,7 @@ public class RoomController {
     @PostMapping("/saveroom")
     public String saveroom(@ModelAttribute Room room, Model model){
         roomRepository.save(room);
-        model.addAttribute("room", room);
+        model.addAttribute("rooms", room);
         return"redirect:/roomlist";
     }
 
