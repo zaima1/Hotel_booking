@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Comer</title>
+    <title>Edit comer</title>
 </head>
 <body>
-    <h1>Add Comer</h1>
+    <h2>Update comer</h2>
+      
         <div>
-            <form method="post" action="#" th:action="@{/savecomer}" th:object="${comer}">
-                <p>People: <input type="number" th:field="*{people}"/></p>
+            <form method="post" action="#" th:action="@{/comerupdate}" th:object="${comer}">
+
+             <input type="hidden" th:field="*{comerId}"/>
+
+                <p>People coming: <input type="number" th:field="*{people}"/></p>
                 <p>Checked in: <input type="checkbox" th:field="*{checked_in}"/></p>
                 <p>Checked out: <input type="checkbox" th:field="*{checked_out}"/></p>
                 <p>Room number: <input type="number" th:field="*{roomNumber}"/></p>
             
-               
-                <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+                <input type="submit" value="Submit" /> 
             </form>
         </div>
 </body>

@@ -15,14 +15,17 @@ public class Comer {
     private Long comerId;
     private Integer people;
     private Boolean checked_in;
+    private Boolean checked_out;
     private Integer roomNumber;
     
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "comer")
     private Booker booker;    
  
-    public Comer(Integer people, Boolean checked_in, Integer roomNumber) {
+    public Comer(Integer people, Boolean checked_in, Boolean checked_out, Integer roomNumber) {
+
         this.people = people;
         this.checked_in = checked_in;
+        this.checked_out = checked_out;
         this.roomNumber = roomNumber;
     }
     public Comer() {
@@ -45,10 +48,25 @@ public class Comer {
     public void setRoomNumber(Integer roomNumber) {
         this.roomNumber = roomNumber;
     }
+    
+    public Boolean getChecked_out() {
+        return checked_out;
+    }
+    public void setChecked_out(Boolean checked_out) {
+        this.checked_out = checked_out;
+    }
+    public Long getComerId() {
+        return comerId;
+    }
+    public void setComerId(Long comerId) {
+        this.comerId = comerId;
+    }
     @Override
     public String toString() {
-        return "Comer [people=" + people + ", checked_in=" + checked_in + ", roomNumber=" + roomNumber + "]";
+        return "Comer [comerId=" + comerId + ", people=" + people + ", checked_in=" + checked_in + ", checked_out="
+                + checked_out + ", roomNumber=" + roomNumber + ", booker=" + booker + "]";
     }
+  
 
     
     

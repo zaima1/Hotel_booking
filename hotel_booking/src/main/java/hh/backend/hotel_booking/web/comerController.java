@@ -23,7 +23,7 @@ public class comerController {
 
     @GetMapping("/comerlist")
     public String listComer(Model model){
-        model.addAttribute("comer", comerRepository.findAll());
+        model.addAttribute("comers", comerRepository.findAll());
         return"/comerlist";
     }
 
@@ -40,11 +40,16 @@ public class comerController {
         model.addAttribute("comer", comer);
         return"redirect:/comerlist";
     }
-
+    @GetMapping("/deletecomer/{id}")
+        public String deleteRoom(@PathVariable("id") long  comerId, Model model){
+            comerRepository.deleteById(comerId);
+            return"redirect:../comerlist";
+    }
     @GetMapping("/updatecomer/{id}")
     public String updateComer(@PathVariable("id") Long comerID, Model model ){
         Comer comer = comerRepository.findById(comerID).orElseThrow(() -> 
         new IllegalArgumentException("Wrong booker id"));
+        model.addAttribute("comer",comer);
         return "editcomer";
     }
 

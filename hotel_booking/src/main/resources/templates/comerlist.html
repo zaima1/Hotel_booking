@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comer</title>
+</head>
+<body>
+    
+    <h1>Comers</h1>
+    <table>
+        <tr>
+            <th>People coming</th>
+            <th>Checked in </th>
+            <th>Checked out</th>
+            <th>Room number</th>
+           
+        </tr>
+    <tr th:each="comer: ${comers}">
+        <td th:text="${comer.people}"></td>
+        <td th:text="${comer.checked_in}"></td>
+        <td th:text="${comer.checked_out}"></td>
+        <td th:text="${comer.roomNumber}"></td>
+         <td><a th:href="@{/deletecomer/{id}(id=${comer.comerId})}" class="">Delete</a></td>
+            <td>  <a th:href="@{/updatecomer/{id}(id=${comer.comerId})}" class="button" >Edit comer</a></td>
+		</tr>
+    </table>
+    <a th:href="@{/addcomer}" class="button" >Add comer</a>
+
+    
+</body>
+</html>
