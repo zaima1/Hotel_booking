@@ -2,6 +2,8 @@ package hh.backend.hotel_booking.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +23,7 @@ public class Hotel {
     private Integer stars;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+    @JsonIgnoreProperties("hotel")
     private List<Room> rooms;
 
     public Hotel() {

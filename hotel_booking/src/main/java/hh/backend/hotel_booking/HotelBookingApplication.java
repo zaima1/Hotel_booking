@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.backend.hotel_booking.domain.Booker;
 import hh.backend.hotel_booking.domain.BookerRepository;
+import hh.backend.hotel_booking.domain.Booking;
+import hh.backend.hotel_booking.domain.BookingRepository;
 import hh.backend.hotel_booking.domain.Comer;
 import hh.backend.hotel_booking.domain.ComerRepository;
 import hh.backend.hotel_booking.domain.Hotel;
@@ -27,13 +29,14 @@ public class HotelBookingApplication {
 
 	@Bean
 	public CommandLineRunner createDemoRows(BookerRepository bookerRepository, RoomRepository roomRepository, 
-	ComerRepository comerRepository, HotelRepository hotelRepository){
+	ComerRepository comerRepository, HotelRepository hotelRepository, BookingRepository bookingRepository){
 		return (args) ->{
 		
 			Room room1 = roomRepository.save(new Room((long ) 12,4,12000, LocalDate.of(2026,12,4), LocalDate.of(2027, 3, 10)));
-			Booker booker1 =bookerRepository.save(new Booker(LocalDate.of(2026,12,5), LocalDate.of(2026,12,6),1200,5,"Aleksi", "Kallio"));
+			Booker booker1 =bookerRepository.save(new Booker("Aleksi", "Kallio"));
 			Hotel hotel1 =hotelRepository.save(new Hotel(4,"martantie 4", "vantaa", "01700",5));
 			Comer comer1 = comerRepository.save(new Comer(4,true, false, 12));
+			Booking booking1 = bookingRepository.save(new Booking(LocalDate.of(2026, 7, 17), LocalDate.of(2027, 12, 20), 12000,4));
 		};
 	}
 }

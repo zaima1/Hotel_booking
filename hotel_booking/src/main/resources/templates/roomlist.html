@@ -15,11 +15,13 @@
             <th>Beds</th>
             <th>Price</th>
             <th>Available</th>
+            <th>Available ending</th>
         </tr>
         <tr th:each="room: ${rooms}">
             <td th:text="${room.beds}"></td>
-            <td th:text="${#numbers.formatDecimal(room.price /100, 1,2 )}"></td>
+            <td th:text="${room.price != null ? #numbers.formatDecimal(room.price / 100.0, 1, 2) : '0.00'}"></td>
             <td th:text="${room.available}"></td>
+            <td th:text="${room.availableEnding}"></td>
 
             <td><a th:href="@{/deleteroom/{id}(id=${room.roomId})}" class="button">Delete</a></td>
             <td><a th:href="@{/updateroom/{id}(id=${room.roomId})}" class="button">Edit room</a></td>

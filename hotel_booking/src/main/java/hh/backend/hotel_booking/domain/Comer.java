@@ -1,6 +1,8 @@
 package hh.backend.hotel_booking.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ public class Comer {
     private Integer roomNumber;
     
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "comer")
+    @JsonIgnoreProperties("comer")
     private Booker booker;    
  
     public Comer(Integer people, Boolean checked_in, Boolean checked_out, Integer roomNumber) {

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+</head>
+<body>
+    
+    <h1>Booking list</h1>
+    <table>
+        <tr>
+            <th>Arraiving</th>
+            <th>Leaving</th>
+            <th>Price</th>
+            <th>People coming</th>
+        </tr>
+    <tr th:each="boo: ${booking}">
+        <td th:text="${boo.arriving}"></td>
+        <td th:text="${boo.leaving}"></td>
+       <td th:text="${boo.price != null ? #numbers.formatDecimal(boo.price / 100.0, 1, 2) : '0.00'}"></td>
+        <td th:text="${boo.peopleComing}"></td>
+         <td><a th:href="@{/deletebooking/{id}(id=${boo.bookingId})}" class="">Delete</a></td>
+            <td>  <a th:href="@{/editbooking/{id}(id=${boo.bookingId})}" class="button" >Edit booking</a></td>
+		</tr>
+    </table>
+    <a th:href="@{/addbooking}" class="button" >Add booking</a>
+
+    
+</body>
+</html>
+

@@ -2,6 +2,8 @@ package hh.backend.hotel_booking.domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,28 +16,23 @@ public class Booker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookerId;
-
-    private LocalDate araiving;
-    private LocalDate leaving;
-    private Integer price;
-    private Integer peopleComing;
     private String firstName;
     private String lastName;
 
+    @JsonIgnoreProperties("booker")
     @OneToOne
     private Comer comer;
+    @JsonIgnoreProperties("booker")
+    @OneToOne
+    private Booking booking;
+    @JsonIgnoreProperties("booker")
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "booker")
     private Room room;
 
     public Booker() {
     }
 
-    public Booker( LocalDate araiving, LocalDate leaving, Integer price, Integer peopleComing,
-            String firstName, String lastName) {
-        this.araiving = araiving;
-        this.leaving = leaving;
-        this.price = price;
-        this.peopleComing = peopleComing;
+    public Booker(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -56,6 +53,7 @@ public class Booker {
         this.lastName = lastName;
     }
 
+    
     public Long getBookerId() {
         return bookerId;
     }
@@ -64,44 +62,11 @@ public class Booker {
         this.bookerId = bookerId;
     }
 
-    public Integer getPeopleComing() {
-        return peopleComing;
-    }
-
-    public void setPeopleComing(Integer peopleComing) {
-        this.peopleComing = peopleComing;
-    }
-
-    
-    public LocalDate getAraiving() {
-        return araiving;
-    }
-
-    public void setAraiving(LocalDate araiving) {
-        this.araiving = araiving;
-    }
-
-    public LocalDate getLeaving() {
-        return leaving;
-    }
-
-    public void setLeaving(LocalDate leaving) {
-        this.leaving = leaving;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
     @Override
     public String toString() {
-        return "Booker [bookerId=" + bookerId + ", araiving=" + araiving + ", leaving=" + leaving + ", price=" + price
-                + ", peopleComing=" + peopleComing + ", firstName=" + firstName + ", lastName=" + lastName + ", comer="
-                + comer + ", room=" + room + "]";
+        return "Booker [bookerId=" + bookerId + ", firstName=" + firstName + ", lastName=" + lastName + "]";
     }
+    
+    
 
 }
