@@ -21,7 +21,12 @@
 		</tr>
     </table>
     <a th:href="@{/addbooker}" class="button" >Add booker</a>
+     <a th:href="@{/listhotel}" class="button">To hotel list</a>
+      <a th:href="@{/roomlist}" class="button">To room list</a>
+       <a th:href="@{/bookinglist}" class="button">To booking list</a>
 
-    
+     <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign out"/>
+    </form>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package hh.backend.hotel_booking.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +28,14 @@ public class BookerController {
     }
 
     @GetMapping("/bookerlist")
+    @PreAuthorize("hasRole('ADMIN')")
     public String bookerlist(Model model){
         model.addAttribute("bookers", bookerRepository.findAll());
         return"bookerlist";
     }
 
     @GetMapping("/addbooker")
+    @PreAuthorize("hasRole('ADMIN')")
     public String addBooker(Model model){
         model.addAttribute("booker", new Booker());
         model.addAttribute("comers", comerRepository.findAll());
@@ -48,12 +51,14 @@ public class BookerController {
     }
 
     @GetMapping("/deletebooker/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBooker(@PathVariable("id")  long bookerId, Model model){
         bookerRepository.deleteById(bookerId);
         return"redirect:/bookerlist";
     }
  
     @GetMapping("/updatebooker/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String updateBooker(@PathVariable("id") long bookerId, Model model){
         Booker booker = bookerRepository.findById(bookerId).orElseThrow(() ->
         new IllegalArgumentException("Wrong booker id"));
@@ -62,6 +67,7 @@ public class BookerController {
     }
 
     @PostMapping("/bookerupdate")
+    @PreAuthorize("hasRole('ADMIN')")
     public String bookerUpdate(@ModelAttribute Booker booker){
         bookerRepository.save(booker);
         return "redirect:../bookerlist";

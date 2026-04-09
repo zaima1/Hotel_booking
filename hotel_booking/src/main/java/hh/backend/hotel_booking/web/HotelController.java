@@ -1,5 +1,6 @@
 package hh.backend.hotel_booking.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class HotelController {
     }
 
     @GetMapping("/addhotel")
+    @PreAuthorize("hasRole('ADMIN')")
     public String addHotel(Model model){
         model.addAttribute("hotel", new Hotel());
         model.addAttribute("rooms", roomRepository.findAll());
@@ -36,6 +38,7 @@ public class HotelController {
     }
 
     @PostMapping("/savehotel")
+    @PreAuthorize("hasRole('ADMIN')")
     public String saveHotel(@ModelAttribute Hotel hotel, Model model){
         hotelRepository.save(hotel);
         model.addAttribute("hotel",hotel);
@@ -44,6 +47,7 @@ public class HotelController {
     
 
     @GetMapping("/deletehotel/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteHotel(@PathVariable("id") Long hotelId, Model model){
         hotelRepository.deleteById(hotelId);
         return "redirect:../listhotel";
@@ -51,6 +55,7 @@ public class HotelController {
 
 
     @GetMapping("/updatehotel/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String updatehotel(@PathVariable("id") Long hotelId, Model model){
         Hotel hotel = hotelRepository.findById(hotelId).orElseThrow(()->
         new IllegalArgumentException("Wrong hotel id"));
@@ -59,6 +64,7 @@ public class HotelController {
     }
 
     @PostMapping("/hotelupdate")
+    @PreAuthorize("hasRole('ADMIN')")
     public String hotelUpdate(@ModelAttribute Hotel hotel){
         hotelRepository.save(hotel);
         return"redirect:/listhotel";

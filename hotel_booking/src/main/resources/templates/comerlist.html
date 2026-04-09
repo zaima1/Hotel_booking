@@ -23,10 +23,16 @@
         <td th:text="${comer.roomNumber}"></td>
          <td><a th:href="@{/deletecomer/{id}(id=${comer.comerId})}" class="">Delete</a></td>
             <td>  <a th:href="@{/updatecomer/{id}(id=${comer.comerId})}" class="button" >Edit comer</a></td>
+            
 		</tr>
     </table>
     <a th:href="@{/addcomer}" class="button" >Add comer</a>
+    <a th:href="@{/listhotel}" class="button">To hotel list</a>
+     <a th:href="@{/roomlist}" class="button">To room list</a>
+    <a th:href="@{/bookinglist}" class="button">To booking list</a>
 
-    
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign out"/>
+    </form>
 </body>
 </html>

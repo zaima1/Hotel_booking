@@ -1,5 +1,6 @@
 package hh.backend.hotel_booking.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,6 +51,7 @@ public class BookedController {
     
 
     @GetMapping("/editbooking/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String editBooking(@PathVariable("id") Long bookingId, Model model){
         model.addAttribute("booking", bookingRepository.findById(bookingId));
         model.addAttribute("booker", bookerRepository.findAll());
@@ -65,14 +67,16 @@ public class BookedController {
     }   
 
     @GetMapping("/deletebooking/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
       public String deleteBooking(@PathVariable("id") Long bookingId, Model model){
         bookingRepository.deleteById(bookingId);
         return"redirect:/bookinglist";
     }
-
-    @GetMapping("/booking/{id}")
-     public String ownBooking(@PathVariable("id") Long bookingId, Model model){
-        bookingRepository.findById(bookingId);
-        return"booking";
+    @GetMapping("/booked/{id}")
+    public String myBooking(@PathVariable("id") Long bookingId, Model model){
+        model.addAttribute(bookingRepository.findById(bookingId));
+        return"bookinglist";
     }
+
+
 }

@@ -15,6 +15,8 @@
             <th>City</th>
             <th>Postcode</th>
             <th>Stars </th>
+            <th sec:authorize="hasRole('ADMIN')"></th>
+            <th sec:authorize="hasRole('ADMIN')"></th>
         </tr>
     <tr th:each="hotel: ${hotels}">
         <td th:text="${hotel.roomAmount}"></td>
@@ -22,11 +24,16 @@
         <td th:text="${hotel.city}"></td>
         <td th:text="${hotel.postcode}"></td>
         <td th:text="${hotel.stars}"></td>
-        <td><a th:href="@{/deletehotel/{id}(id=${hotel.hotelId})}" class="button">Delete</a></td>
-        <td>  <a th:href="@{/updatehotel/{id}(id=${hotel.hotelId})}" class="button" >Edit Hotel</a></td>
+        <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/deletehotel/{id}(id=${hotel.hotelId})}" class="button">Delete</a></td>
+        <td sec:authorize="hasRole('ADMIN')">  <a th:href="@{/updatehotel/{id}(id=${hotel.hotelId})}" class="button" >Edit Hotel</a></td>
 		</tr>
     </table>
-    <a th:href="@{/addhotel}" class="button" >Add Hotel</a>
+     <a th:href="@{/roomlist}" class="button">To room list</a>
+    <a th:href="@{/bookinglist}" class="button">To booking list</a>
+   <td sec:authorize="hasRole('ADMIN')"> <a th:href="@{/addhotel}" class="button" >Add Hotel</a> <td/>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign out"/>
+    </form>
 
     
 </body>

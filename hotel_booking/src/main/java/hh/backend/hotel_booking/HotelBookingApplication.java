@@ -1,8 +1,7 @@
 package hh.backend.hotel_booking;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -34,7 +33,8 @@ public class HotelBookingApplication {
 		
 			Room room1 = roomRepository.save(new Room((long ) 12,4,12000, LocalDate.of(2026,12,4), LocalDate.of(2027, 3, 10)));
 			Booker booker1 =bookerRepository.save(new Booker("Aleksi", "Kallio"));
-			Hotel hotel1 =hotelRepository.save(new Hotel(4,"martantie 4", "vantaa", "01700",5));
+			Hotel hotel1 =hotelRepository.save(new Hotel(4,"Martantie 4", "Vantaa", "01700",5));
+			Hotel hotel2 =hotelRepository.save(new Hotel(10,"Isotie 7", "Tampere", "0200",7));
 			Comer comer1 = comerRepository.save(new Comer(4,true, false, 12));
 			Booking booking1 = bookingRepository.save(new Booking(LocalDate.of(2026, 7, 17), LocalDate.of(2027, 12, 20), 12000,4));
 		};

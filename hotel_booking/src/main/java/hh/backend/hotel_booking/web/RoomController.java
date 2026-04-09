@@ -1,5 +1,6 @@
 package hh.backend.hotel_booking.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ public class RoomController {
     }
 
     @GetMapping("/addroom")
+    @PreAuthorize("hasRole('ADMIN')")
     public String adroom(Model model){
         model.addAttribute("rooms", new Room());
         model.addAttribute("hotel", hotelRepository.findAll());
@@ -36,6 +38,7 @@ public class RoomController {
     }
 
     @PostMapping("/saveroom")
+    @PreAuthorize("hasRole('ADMIN')")
     public String saveroom(@ModelAttribute Room room, Model model){
         roomRepository.save(room);
         model.addAttribute("rooms", room);
@@ -43,12 +46,14 @@ public class RoomController {
     }
 
     @GetMapping("/deleteroom/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteRoom(@PathVariable("id") long  roomNumber, Model model){
         roomRepository.deleteById(roomNumber);
         return"redirect:../roomlist";
     }
 
     @GetMapping("/updateroom/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String updateRoom(@PathVariable("id") long roomNumber, Model model ){
         Room room = roomRepository.findById(roomNumber).orElseThrow(()->
          new IllegalArgumentException("wrong room number"));
@@ -57,6 +62,7 @@ public class RoomController {
     }
 
     @PostMapping("/roomupdate")
+    @PreAuthorize("hasRole('ADMIN')")
     public String roomUpdate(@ModelAttribute Room room){
         roomRepository.save(room);
         return "redirect:/roomlist";
