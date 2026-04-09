@@ -1,6 +1,6 @@
 package hh.backend.hotel_booking.domain;
 
-import java.time.LocalDate;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Hotel</title>
 </head>
+
 <body>
     <h2>Update hotel</h2>
-      
-        <div>
-            <form method="post" action="#" th:action="@{/hotelupdate}" th:object="${hotels}">
 
-             <input type="hidden" th:field="*{hotelId}"/>
+    <div>
+        <form method="post" action="#" th:action="@{/hotelupdate}" th:object="${hotels}">
 
-                <p>Room amount: <input type="number" th:field="*{roomAmount}"/></p>
-                <p>Address: <input type="text" th:field="*{address}"/></p>
-                <p>City: <input type="text" th:field="*{city}"/></p>
-                <p>Postcode: <input type="text" th:field="*{postcode}"/></p>
-                <p>Stars: <input max="5" type="number" th:field="*{stars}"/></p>
-                <input type="submit" value="Submit" /> 
-            </form>
-        </div>
+            <input type="hidden" th:field="*{hotelId}" />
+
+            <p>Room amount: <input type="number" th:field="*{roomAmount}" /></p>
+            <p>Address: <input type="text" th:field="*{address}" /></p>
+            <p>City: <input type="text" th:field="*{city}" /></p>
+            <p>Postcode: <input type="text" th:field="*{postcode}" /></p>
+            <p>Stars: <input max="5" type="number" th:field="*{stars}" /></p>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 </body>
+
 </html>

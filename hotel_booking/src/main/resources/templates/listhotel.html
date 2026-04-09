@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotels</title>
 </head>
+
 <body>
-    
+
     <h1>Hotels</h1>
     <table>
         <tr>
@@ -18,23 +21,29 @@
             <th sec:authorize="hasRole('ADMIN')"></th>
             <th sec:authorize="hasRole('ADMIN')"></th>
         </tr>
-    <tr th:each="hotel: ${hotels}">
-        <td th:text="${hotel.roomAmount}"></td>
-        <td th:text="${hotel.address}"></td>
-        <td th:text="${hotel.city}"></td>
-        <td th:text="${hotel.postcode}"></td>
-        <td th:text="${hotel.stars}"></td>
-        <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/deletehotel/{id}(id=${hotel.hotelId})}" class="button">Delete</a></td>
-        <td sec:authorize="hasRole('ADMIN')">  <a th:href="@{/updatehotel/{id}(id=${hotel.hotelId})}" class="button" >Edit Hotel</a></td>
-		</tr>
+        <tr th:each="hotel: ${hotels}">
+            <td th:text="${hotel.roomAmount}"></td>
+            <td th:text="${hotel.address}"></td>
+            <td th:text="${hotel.city}"></td>
+            <td th:text="${hotel.postcode}"></td>
+            <td th:text="${hotel.stars}"></td>
+            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/deletehotel/{id}(id=${hotel.hotelId})}"
+                    class="button">Delete</a></td>
+            <td sec:authorize="hasRole('ADMIN')"> <a th:href="@{/updatehotel/{id}(id=${hotel.hotelId})}"
+                    class="button">Edit Hotel</a></td>
+        </tr>
     </table>
-     <a th:href="@{/roomlist}" class="button">To room list</a>
+    <a th:href="@{/roomlist}" class="button">To room list</a>
     <a th:href="@{/bookinglist}" class="button">To booking list</a>
-   <td sec:authorize="hasRole('ADMIN')"> <a th:href="@{/addhotel}" class="button" >Add Hotel</a> <td/>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign out"/>
-    </form>
+    <a th:href="@{/bookerlist}" class="button">To booker list</a>
+    <a th:href="@{/comerlist}" class="button">To comer list</a>
+    <td sec:authorize="hasRole('ADMIN')"> <a th:href="@{/addhotel}" class="button">Add Hotel</a>
+        <td />
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign out" />
+        </form>
 
-    
+
 </body>
+
 </html>

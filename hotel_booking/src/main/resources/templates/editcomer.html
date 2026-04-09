@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit comer</title>
 </head>
+
 <body>
     <h2>Update comer</h2>
-      
-        <div>
-            <form method="post" action="#" th:action="@{/comerupdate}" th:object="${comer}">
 
-             <input type="hidden" th:field="*{comerId}"/>
+    <div>
+        <form method="post" action="#" th:action="@{/comerupdate}" th:object="${comer}">
 
-                <p>People coming: <input type="number" th:field="*{people}"/></p>
-                <p>Checked in: <input type="checkbox" th:field="*{checked_in}"/></p>
-                <p>Checked out: <input type="checkbox" th:field="*{checked_out}"/></p>
-                <p>Room number: <input type="number" th:field="*{roomNumber}"/></p>
-            
-                <input type="submit" value="Submit" /> 
-            </form>
-        </div>
+            <input type="hidden" th:field="*{comerId}" />
+
+            <p>People coming: <input type="number" th:field="*{people}" /></p>
+            <p>Checked in: <input type="checkbox" th:field="*{checked_in}" /></p>
+            <p>Checked out: <input type="checkbox" th:field="*{checked_out}" /></p>
+            <p>Room number: <input type="number" th:field="*{roomNumber}" /></p>
+
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 </body>
+
 </html>

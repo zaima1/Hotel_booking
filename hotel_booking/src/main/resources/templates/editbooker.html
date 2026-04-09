@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit booker</title>
 </head>
+
 <body>
     <h2>Update booker</h2>
-      
-        <div>
-            <form method="post" action="#" th:action="@{/bookerupdate}" th:object="${bookers}">
 
-             <input type="hidden" th:field="*{bookerId}"/>
-                  <p>Name: <input type="text" th:field="*{firstName}"/></p>
-                <p>Name: <input type="text" th:field="*{lastName}"/></p>
-                <input type="submit" value="Submit" /> 
-            </form>
-        </div>
+    <div>
+        <form method="post" action="#" th:action="@{/bookerupdate}" th:object="${bookers}">
+
+            <input type="hidden" th:field="*{bookerId}" />
+            <p>Name: <input type="text" th:field="*{firstName}" /></p>
+            <p>Name: <input type="text" th:field="*{lastName}" /></p>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 </body>
+
 </html>

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comer</title>
 </head>
+
 <body>
-    
+
     <h1>Comers</h1>
     <table>
         <tr>
@@ -14,25 +17,32 @@
             <th>Checked in </th>
             <th>Checked out</th>
             <th>Room number</th>
-           
+            <th sec:authorize="hasRole('ADMIN')"></th>
+            <th sec:authorize="hasRole('ADMIN')"></th>
+
         </tr>
-    <tr th:each="comer: ${comers}">
-        <td th:text="${comer.people}"></td>
-        <td th:text="${comer.checked_in}"></td>
-        <td th:text="${comer.checked_out}"></td>
-        <td th:text="${comer.roomNumber}"></td>
-         <td><a th:href="@{/deletecomer/{id}(id=${comer.comerId})}" class="">Delete</a></td>
-            <td>  <a th:href="@{/updatecomer/{id}(id=${comer.comerId})}" class="button" >Edit comer</a></td>
-            
-		</tr>
+        <tr th:each="comer: ${comers}">
+            <td th:text="${comer.people}"></td>
+            <td th:text="${comer.checked_in}"></td>
+            <td th:text="${comer.checked_out}"></td>
+            <td th:text="${comer.roomNumber}"></td>
+            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/deletecomer/{id}(id=${comer.comerId})}"
+                    class="">Delete</a></td>
+            <td sec:authorize="hasRole('ADMIN')"> <a th:href="@{/updatecomer/{id}(id=${comer.comerId})}"
+                    class="button">Edit comer</a></td>
+
+        </tr>
     </table>
-    <a th:href="@{/addcomer}" class="button" >Add comer</a>
+    <a th:href="@{/addcomer}" class="button">Add comer</a>
+
     <a th:href="@{/listhotel}" class="button">To hotel list</a>
-     <a th:href="@{/roomlist}" class="button">To room list</a>
+    <a th:href="@{/roomlist}" class="button">To room list</a>
     <a th:href="@{/bookinglist}" class="button">To booking list</a>
+    <a th:href="@{/bookerlist}" class="button">To booker list</a>
 
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign out"/>
+        <input type="submit" value="Sign out" />
     </form>
 </body>
+
 </html>

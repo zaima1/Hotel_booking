@@ -23,7 +23,6 @@ public class comerController {
     }
 
     @GetMapping("/comerlist")
-    @PreAuthorize("hasRole('ADMIN')")
     public String listComer(Model model){
         model.addAttribute("comers", comerRepository.findAll());
         return"/comerlist";

@@ -28,7 +28,6 @@ public class BookerController {
     }
 
     @GetMapping("/bookerlist")
-    @PreAuthorize("hasRole('ADMIN')")
     public String bookerlist(Model model){
         model.addAttribute("bookers", bookerRepository.findAll());
         return"bookerlist";
@@ -44,6 +43,7 @@ public class BookerController {
     }
 
     @PostMapping("/savebooker")
+    @PreAuthorize("hasRole('ADMIN')")
     public String saveBooker (@ModelAttribute Booker booker, Model model){
         bookerRepository.save(booker);
         model.addAttribute("bookers", booker);
@@ -70,6 +70,6 @@ public class BookerController {
     @PreAuthorize("hasRole('ADMIN')")
     public String bookerUpdate(@ModelAttribute Booker booker){
         bookerRepository.save(booker);
-        return "redirect:../bookerlist";
+        return "redirect:./bookerlist";
     }
 }

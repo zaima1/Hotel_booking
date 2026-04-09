@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Room</title>
 </head>
+
 <body>
     <h2>Update room</h2>
-      
-        <div>
-            <form method="post" action="#" th:action="@{/roomupdate}" th:object="${rooms}">
 
-             <input type="hidden" th:field="*{roomId}"/>
+    <div>
+        <form method="post" action="#" th:action="@{/roomupdate}" th:object="${rooms}">
 
-                <p>Beds in room: <input type="number" th:field="*{beds}"/></p>
-                <p>Price in sents: <input type="text" th:field="*{price}"/></p>
-                <p>Available: <input type="date" th:field="*{available}"/></p>
-                <p>Available ending: <input type="date" th:field="*{availableEnding}"/></p>
-            
-                <input type="submit" value="Submit" /> 
-            </form>
-        </div>
+            <input type="hidden" th:field="*{roomId}" />
+
+            <p>Beds in room: <input type="number" th:field="*{beds}" /></p>
+            <p>Price in sents: <input type="text" th:field="*{price}" /></p>
+            <p>Available: <input type="date" th:field="*{available}" /></p>
+            <p>Available ending: <input type="date" th:field="*{availableEnding}" /></p>
+
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 </body>
+
 </html>

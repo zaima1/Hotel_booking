@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -26,16 +27,22 @@
             <td th:text="${room.available}"></td>
             <td th:text="${room.availableEnding}"></td>
 
-            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/deleteroom/{id}(id=${room.roomId})}" class="button">Delete</a></td>
-            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/updateroom/{id}(id=${room.roomId})}" class="button">Edit room</a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/deleteroom/{id}(id=${room.roomId})}"
+                    class="button">Delete</a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/updateroom/{id}(id=${room.roomId})}" class="button">Edit
+                    room</a></td>
         </tr>
 
     </table>
-          <a th:href="@{/bookinglist}" class="button">To booking list</a>
-          <a th:href="@{/listhotel}" class="button">To hotel list</a>
-    <div sec:authorize="hasRole('ADMIN')">  <a th:href="@{/addroom}" class="button">Add room</a></div>
+    <a th:href="@{/bookinglist}" class="button">To booking list</a>
+    <a th:href="@{/listhotel}" class="button">To hotel list</a>
+    <a th:href="@{/bookerlist}" class="button">To booker list</a>
+    <a th:href="@{/comerlist}" class="button">To comer list</a>
+
+    <div sec:authorize="hasRole('ADMIN')"> <a th:href="@{/addroom}" class="button">Add room</a></div>
 </body>
- <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign out"/>
-    </form>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign out" />
+</form>
+
 </html>

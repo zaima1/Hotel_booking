@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.http.HttpMethod;
+
 
 
 
@@ -27,7 +27,7 @@ http
 .csrf(csrf -> csrf.disable())
 		 .authorizeHttpRequests(authorize -> authorize
                 
-                .requestMatchers("/roomlist", "/roomlist/**", "/listhotel/**", "/booked/**","/login/**").permitAll()
+                .requestMatchers("/roomlist", "/roomlist/**", "/listhotel/**","/bookerlist/**", "/booked/**", "/api/**","/comerlist/**","/login/**").permitAll()
                 .requestMatchers("/addroom", "/deleteroom/**", "/updateroom/**", "/saveroom", "/roomupdate").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )

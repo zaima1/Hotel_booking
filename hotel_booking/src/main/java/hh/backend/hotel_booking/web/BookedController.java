@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.service.annotation.PatchExchange;
+
 
 import hh.backend.hotel_booking.domain.BookerRepository;
 import hh.backend.hotel_booking.domain.Booking;
