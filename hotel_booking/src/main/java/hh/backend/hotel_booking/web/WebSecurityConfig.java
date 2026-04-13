@@ -27,7 +27,7 @@ http
 .csrf(csrf -> csrf.disable())
 		 .authorizeHttpRequests(authorize -> authorize
                 
-                .requestMatchers("/roomlist", "/roomlist/**", "/listhotel/**","/bookerlist/**", "/booked/**", "/api/**","/comerlist/**","/login/**").permitAll()
+                .requestMatchers("/roomlist", "/roomlist/**", "/listhotel/**","/bookerlist/**", "/bookinglist/**", "/api/**","/comerlist/**","/login/**").permitAll()
                 .requestMatchers("/addroom", "/deleteroom/**", "/updateroom/**", "/saveroom", "/roomupdate").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )

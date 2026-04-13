@@ -62,6 +62,6 @@ public class comerController {
     @PreAuthorize("hasRole('ADMIN')")
     public String comerUpdate(@ModelAttribute Comer comer){
         comerRepository.save(comer);
-        return "rederect:/comerlist";
+        return "redirect:/comerlist";
     }
 }

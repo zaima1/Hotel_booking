@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.security.autoconfigure.SecurityProperties.User;
 import org.springframework.context.annotation.Bean;
 
 import hh.backend.hotel_booking.domain.AppUserRepository;
@@ -44,6 +45,8 @@ public class HotelBookingApplication {
 			Comer comer1 = comerRepository.save(new Comer(4, true, false, 12));
 			Booking booking1 = bookingRepository
 					.save(new Booking(LocalDate.of(2026, 7, 17), LocalDate.of(2027, 12, 20), 12000, 4));
+			Appuser appuser1 = appUserRepository.save(new Appuser("Leena", "ananas", "USER"));
+			
 
 		};
 	}

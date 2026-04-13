@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface BookerRepository extends CrudRepository <Booker, Long> {
 
-
+    Booker findBookerByLastName(String lastName);
 }
